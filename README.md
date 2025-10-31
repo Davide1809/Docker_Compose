@@ -1,4 +1,4 @@
-# Assignment #5 - Dockerize a Recipe Sharing Application 
+# Assignment #5 - Dockerize a Recipe Sharing Application 🍳
 
 A full-stack recipe sharing application with React frontend and Node.js backend.
 
