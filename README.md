@@ -1,4 +1,4 @@
-# Assignment #5 - Dockerize a Recipe Sharing Application
+# Assignment #5 - Dockerize a Recipe Sharing Application 🍳
 
 A full-stack recipe sharing application with React frontend and Node.js backend.
 
@@ -56,4 +56,4 @@ recipe-app/
 ├── frontend/       # React application (Vite)
 ├── backend/        # Node.js/Express API
 └── README.md       # This file
-```
+```- CI/CD verified on Fri Oct 31 16:31:24 EDT 2025
