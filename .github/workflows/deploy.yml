@@ -1,0 +1,58 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          credentials: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Run backend tests
+        run: |
+          cd backend
+          npm test
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+      - name: Deploy backend to Cloud Run
+        run: |
+          gcloud run deploy recipe-backend \
+            --source backend \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
+
+      - name: Deploy frontend to Cloud Run
+        run: |
+          gcloud run deploy recipe-frontend \
+            --source frontend \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
