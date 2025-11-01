@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 5000
 
 # Step h: Start the application
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
