@@ -44,8 +44,8 @@ const validateRecipe = (recipe) => {
 
 // Get all recipes
 app.get('/api/recipes', (req, res) => {
-  res.json(recipes
-}); // ❌ missing parenthesis on purpose
+  res.json(recipes);
+}); 
 
 // Get single recipe by ID
 app.get('/api/recipes/:id', (req, res) => {
