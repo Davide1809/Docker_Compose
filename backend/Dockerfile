@@ -14,7 +14,7 @@ RUN npm install --only=production
 COPY . .
 
 # Step g: Expose the backend port (5000)
-EXPOSE 5000
+EXPOSE 8080
 
 # Step h: Start the application
 CMD ["node", "server.js"]
